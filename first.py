@@ -1,4 +1,4 @@
-import telebot 
+"""import telebot 
 from telethon.sync import TelegramClient 
 from telethon.tl.types import InputPeerUser, InputPeerChannel 
 from telethon import TelegramClient, sync, events
@@ -32,6 +32,22 @@ except Exception as e:
     print(e)
 
 
-client.disconnect()
+client.disconnect()"""
 
 
+import requests
+import json
+
+URL="https://hs-consumer-api.espncricinfo.com/v1/global/fastscore/message/base?messageId=lm-1612076394086"
+
+r=requests.get(URL)
+
+data=r.json()
+
+
+#matches=(data["content"]["matches"])
+
+#print(matches)
+
+with open("data.txt","w") as f:
+    json.dump(data,f,indent=4)
